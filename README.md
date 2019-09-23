@@ -1,1 +1,1 @@
-# GifTastic-Assignment-GH-Pages
+# GifTastic-Assignment

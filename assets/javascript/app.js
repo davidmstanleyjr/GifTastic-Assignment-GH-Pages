@@ -4,7 +4,7 @@ var topics = ["Daenerys Targaryen", "Jon Snow", "Jaime Lannister", "Cersei Lanni
 var characterSelected = "";
 var newCharacter;
 
-//creates newTopic on click event
+//creates newTopic onclick event
 $("#newTopic").on("click", function () {
 var button = $("<button>");
 button.text($("#userTopic").val())
@@ -42,9 +42,11 @@ function attachEvent () {
             'q': characterSelected,
             'api_key': "rNdXDLNYthIjN88XMIVsVMmBK57fR2jJ",
             "limit": 10
+            
+            
 
         });
-// This pulls populates the images on to the page
+// This  populates the images on to the page
         $.ajax({
             url: url,
             method: "GET"
@@ -58,6 +60,8 @@ function attachEvent () {
                 var characterDiv = $("<div>")
                 characterDiv.addClass("col-sm-4")
 
+                
+
                 var characterCard = $("<div>")
                 characterCard.addClass("card")
 //This is how I get the images to animate or stay still
@@ -68,10 +72,15 @@ function attachEvent () {
                 characterImage.addClass("card-img-top");
                 characterCard.append(characterImage);
 
-                var characterTitle = $("<div>")
-                characterTitle.addClass("card-body")
-                var characterTitleHeading = $("<h5>")
-
+                // Create rating item and append to character card
+                var characterRating = $("<p>");
+                characterRating.addClass("rating");
+                characterRating.append("rating: " + item.rating);
+                characterCard.append(characterRating);
+                
+                
+                
+                
 //This allows the image to animate when clicked 
                 characterCard.on("click", function () {
                     console.log("clicked");
@@ -87,7 +96,7 @@ function attachEvent () {
                         characterImage.attr("data-state", "still")
                     }
                 })
-//Thi appends my character ID to the characterCard.
+//This appends my character ID to the characterCard.
                 $("#characters").append(characterCard);
                 
             });
